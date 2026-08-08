@@ -1,0 +1,10 @@
+.venv/
+venv/
+ENV/
+env/
+pythonenv/
+
+*.sqlite3
+*.db
+.env
+.vscode/
