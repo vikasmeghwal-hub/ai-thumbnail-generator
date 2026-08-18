@@ -13,6 +13,7 @@ def _now() -> datetime:
 class Thumbnail(SQLModel, table=True):
     id: Optional[str] = Field(default_factory=_uuid, primary_key=True)
     job_id: str = Field(foreign_key="job.id")
+    imagekit_url: Optional[str] = Field(default=None)
     style_name: str = Field(defualt="")
     status: str = Field(default="pending")
     error_message: Optional[str] = Field(default=None)
@@ -23,7 +24,7 @@ class Thumbnail(SQLModel, table=True):
 class job(SQLModel, table=True):
     id: Optional[str] = Field(default_factory=_uuid, primary_key=True)
     prompt: str = Field(default="")
-    image_url: str = Field(default="")
+    # image_url: str = Field(default="")
     created_at: datetime = Field(default_factory=_now)
     num_thumbnails: int = Field(default=1, ge=1, le=3)
     headshot_url: str = Field(default="")
